@@ -22,7 +22,7 @@ const languageStrings = {
             SKILL_NAME: 'Cocktail Master',
             WELCOME_MESSAGE: "Welcome to %s. You can ask a question like, what\'s the popular cocktail in Massachusetts ? ... Now, what can I help you with?",
             WELCOME_REPROMT: 'For instructions on what you can say, please say help me.',
-            DISPLAY_CARD_TITLE: '%s  - Recipe for %s.',
+            DISPLAY_CARD_TITLE: '%s  - Popular drink for %s.',
             HELP_MESSAGE: "You can ask questions such as, what\'s the cocktail, or, you can say exit...Now, what can I help you with?",
             HELP_REPROMT: "You can say things like, what\'s the cocktail, or you can say exit...Now, what can I help you with?",
             STOP_MESSAGE: 'Goodbye!',
@@ -57,7 +57,8 @@ const handlers = {
         if (recipe) {
             this.attributes.speechOutput = recipe;
             this.attributes.repromptSpeech = this.t('RECIPE_REPEAT_MESSAGE');
-            this.emit(':askWithCard', recipe, this.attributes.repromptSpeech, cardTitle, recipe);
+            this.emit(':tell', recipe, this.attributes.repromptSpeech, cardTitle, recipe);
+         //   this.emit(':tell', 'SessionEndedRequest');
         } else {
             let speechOutput = this.t('RECIPE_NOT_FOUND_MESSAGE');
             const repromptSpeech = this.t('RECIPE_NOT_FOUND_REPROMPT');
